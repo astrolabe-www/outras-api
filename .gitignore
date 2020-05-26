@@ -1,0 +1,7 @@
+.DS_Store
+rundb.sh
+**/node_modules
+.env
+out/
+.vscode
+.mongodb/
