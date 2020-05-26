@@ -18,4 +18,4 @@ script:
 deploy:
   provider: heroku
   api_key: $HEROKU_KEY
-  app: outras-api
+  app: $HEROKU_APP
