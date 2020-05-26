@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "postpostpostinstall": "node ./scripts/seed",
     "seed": "node ./scripts/seed",
     "lint": "eslint ."
   },

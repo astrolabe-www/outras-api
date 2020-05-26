@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - 12
+
+notifications:
+  email: false
+
+branches:
+  only:
+    - master
+
+script:
+  - echo "seeding"
+  - npm run seed
+  - echo "deploying"
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_KEY
+  app: outras-api
