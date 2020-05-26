@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 require('./signal.model');
 
 const ProductSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
   article: {
     type: Number,
     required: true
