@@ -1,4 +1,4 @@
-[//]: # ([![Build Status](https://travis-ci.org/arenacoragem/relampago-api.svg?branch=master)](https://travis-ci.org/arenacoragem/relampago-api))
+[![Build Status](https://travis-ci.org/thiagohersan/outras-api.svg?branch=master)](https://travis-ci.org/thiagohersan/outras-api)
 
 ### mongo
 ```
