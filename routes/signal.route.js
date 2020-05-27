@@ -53,11 +53,13 @@ module.exports = (app) => {
       signal.values.set(currentDailyMinute(), clamp(req.params.signal_value, 0.0, 1.0));
       signal.average = average(signal.values);
 
-      Product.find({ _id: { $in: signal.product_ids } }).then((products) => {
+      Product.find({ _id: { $in: signal.product_ids } }).populate('signals').then((products) => {
         for (const product of products) {
-          // TODO: update prices
-          // for (sigs in product) // aaaahhhhhhhh!!!!
-          console.log(product.name);
+          const sum = product.signals.reduce((acc, sig) => acc + sig.average, 0);
+          const avg = sum / Math.max(1.0, product.signals.length);
+
+          product.price = product.base_price + avg * product.base_price;
+          product.save();
         }
       });
 
