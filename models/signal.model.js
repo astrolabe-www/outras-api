@@ -8,6 +8,9 @@ const SignalSchema = new mongoose.Schema({
   values: {
     type: [Number],
     required: true
+  },
+  product_ids: {
+    type: [mongoose.Schema.Types.ObjectId]
   }
 });
 
