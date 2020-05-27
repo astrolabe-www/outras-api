@@ -13,7 +13,7 @@ const signal = require('./routes/signal.route');
 const PORT = process.env.PORT || 5050;
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }).then(() => {
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   logger.info('Connected to database...');
 });
 

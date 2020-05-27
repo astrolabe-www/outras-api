@@ -45,7 +45,7 @@ function seed(dbURI) {
     return product.save();
   }
 
-  mongoose.connect(dbURI, { useNewUrlParser: true })
+  mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => Product.deleteMany({ }))
     .then(() => Signal.find())
     .then((found_signals) => {
@@ -389,7 +389,6 @@ function seed(dbURI) {
           signals: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2430' ]
         })
       );
-
     })
     .then(() => {
       Promise.all(PRODUCTS).then(() => {
