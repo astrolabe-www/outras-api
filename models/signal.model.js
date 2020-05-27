@@ -9,6 +9,10 @@ const SignalSchema = new mongoose.Schema({
     type: [Number],
     required: true
   },
+  average: {
+    type: Number,
+    required: true
+  },
   product_ids: {
     type: [mongoose.Schema.Types.ObjectId]
   }

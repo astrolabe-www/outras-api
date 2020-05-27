@@ -33,7 +33,8 @@ function seed(dbURI) {
       if (!(sig_name in SIGNALS)) {
         const new_signal = new Signal({
           name: sig_name,
-          values: fillArray(0, 24 * 60)
+          values: fillArray(0, 24 * 60),
+          average: 0.0
         });
         SIGNALS[sig_name] = new_signal;
         new_signal.save();
@@ -66,6 +67,7 @@ function seed(dbURI) {
 
   mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => Product.deleteMany({ }))
+    //.then(() => Signal.deleteMany({ }))
     .then(() => Signal.find())
     .then((found_signals) => {
 
