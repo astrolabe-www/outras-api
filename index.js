@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const bodyParser = require('body-parser');
 
 const logger = require('./utils/logger');
 
@@ -23,6 +24,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(bodyParser.json({ limit: '5mb' }));
 app.use(express.json({ limit: '5mb' }));
 app.use(helmet());
 
