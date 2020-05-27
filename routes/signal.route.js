@@ -21,14 +21,44 @@ module.exports = (app) => {
     });
   });
 
+  function currentDailyMinute() {
+    const mDate = new Date();
+    return Math.floor((60 * mDate.getHours()) + mDate.getMinutes());
+  }
+
+  function clamp(val, min, max) {
+    return Math.max(min, Math.min(max, parseFloat(val)));
+  }
+
+  function normalize01(val, min, max) {
+    return (val - min) / (max - min);
+  }
+
+  function average(arr) {
+    let sum = 0.0;
+    let min = 1.0;
+    let max = 0.0;
+
+    for (const val of arr) {
+      sum += val;
+      if(val < min) min = val;
+      if(val > max) max = val;
+    }
+    const rawAvg = sum / Math.max(1.0, arr.length);
+    return normalize01(rawAvg, min, max);
+  }
+
   router.post('/:signal_name/:signal_value', (req, res) => {
     Signal.findOne({ name: req.params.signal_name }).then((signal) => {
-      // TODO: set value in signal array
-      // signal.value[magick_foo_time] = req.params.signal_value;
+      signal.values.set(currentDailyMinute(), clamp(req.params.signal_value, 0.0, 1.0));
+      signal.average = average(signal.values);
 
       Product.find({ _id: { $in: signal.product_ids } }).then((products) => {
-        // TODO: update prices;
-        console.log(products);
+        for (const product of products) {
+          // TODO: update prices
+          // for (sigs in product) // aaaahhhhhhhh!!!!
+          console.log(product.name);
+        }
       });
 
       signal.save().then((saved) => {
