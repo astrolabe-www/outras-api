@@ -7,10 +7,24 @@ module.exports = (app) => {
   app.use('/products', router);
 
   router.get('/', (req, res) => {
-    Product.find().then((result) => {
+    Product.find().select('-_id -__v').lean().then((result) => {
       res.status(200).send({
         success: true,
         data: result
+      });
+    }).catch((err) => {
+      res.status(500).send({
+        success: false,
+        data: `${err}`
+      });
+    });
+  });
+
+  router.get('/:article/price', (req, res) => {
+    Product.findOne({ article: req.params.article }).select('-_id -__v').lean().then((result) => {
+      res.status(200).send({
+        success: true,
+        data: result.price
       });
     }).catch((err) => {
       res.status(500).send({
