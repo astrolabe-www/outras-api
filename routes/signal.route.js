@@ -11,7 +11,7 @@ module.exports = (app) => {
     Signal.find().select('-_id -__v').lean().then((result) => {
       res.status(200).send({
         success: true,
-        data: result
+        data: { signals: result }
       });
     }).catch((err) => {
       res.status(500).send({
@@ -66,7 +66,7 @@ module.exports = (app) => {
       signal.save().then((saved) => {
         res.status(200).send({
           success: true,
-          data: saved
+          data: { signal: saved }
         });
       });
     }).catch((err) => {

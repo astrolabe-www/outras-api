@@ -10,7 +10,7 @@ module.exports = (app) => {
     Product.find().select('-_id -__v').lean().then((result) => {
       res.status(200).send({
         success: true,
-        data: result
+        data: { products: result }
       });
     }).catch((err) => {
       res.status(500).send({
@@ -24,7 +24,7 @@ module.exports = (app) => {
     Product.findOne({ article: req.params.article }).select('-_id -__v').lean().then((result) => {
       res.status(200).send({
         success: true,
-        data: result.price
+        data: { price: result.price }
       });
     }).catch((err) => {
       res.status(500).send({
@@ -43,7 +43,7 @@ module.exports = (app) => {
 
       res.status(200).send({
         success: true,
-        data: prices
+        data: { prices }
       });
     }).catch((err) => {
       res.status(500).send({
