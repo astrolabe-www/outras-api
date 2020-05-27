@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-require('./signal.model');
 
 const ProductSchema = new mongoose.Schema({
   name: {
