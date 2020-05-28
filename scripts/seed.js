@@ -82,7 +82,7 @@ function seed(dbURI) {
         createProduct({
           name: 'splay',
           article: 476011,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_11' ]
         })
       );
@@ -91,7 +91,7 @@ function seed(dbURI) {
         createProduct({
           name: 'noise',
           article: 476010,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_10' ]
         })
       );
@@ -100,7 +100,7 @@ function seed(dbURI) {
         createProduct({
           name: 'sha3-512',
           article: 476009,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_09' ]
         })
       );
@@ -109,7 +109,7 @@ function seed(dbURI) {
         createProduct({
           name: 'integrate',
           article: 476008,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_08' ]
         })
       );
@@ -118,7 +118,7 @@ function seed(dbURI) {
         createProduct({
           name: 'breath/depth',
           article: 476007,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_07' ]
         })
       );
@@ -127,7 +127,7 @@ function seed(dbURI) {
         createProduct({
           name: 'gcd',
           article: 476006,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_06' ]
         })
       );
@@ -136,7 +136,7 @@ function seed(dbURI) {
         createProduct({
           name: 'convex hull',
           article: 476005,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_05' ]
         })
       );
@@ -145,7 +145,7 @@ function seed(dbURI) {
         createProduct({
           name: 'quicksort',
           article: 476004,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_04' ]
         })
       );
@@ -154,7 +154,7 @@ function seed(dbURI) {
         createProduct({
           name: 'reaction/diffusion',
           article: 476003,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_03' ]
         })
       );
@@ -163,7 +163,7 @@ function seed(dbURI) {
         createProduct({
           name: 'eigenvalue',
           article: 476002,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_02' ]
         })
       );
@@ -172,7 +172,7 @@ function seed(dbURI) {
         createProduct({
           name: 'fft',
           article: 476001,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_01' ]
         })
       );
@@ -181,7 +181,7 @@ function seed(dbURI) {
         createProduct({
           name: 'prng',
           article: 476000,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_12' ]
         })
       );
@@ -190,7 +190,7 @@ function seed(dbURI) {
         createProduct({
           name: 'inversion',
           article: 476012,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_12' ]
         })
       );
@@ -199,7 +199,7 @@ function seed(dbURI) {
         createProduct({
           name: 'alpha/beta',
           article: 476013,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_01' ]
         })
       );
@@ -208,7 +208,7 @@ function seed(dbURI) {
         createProduct({
           name: 'ellipsis',
           article: 476014,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_01' ]
         })
       );
@@ -217,7 +217,7 @@ function seed(dbURI) {
         createProduct({
           name: 'quantization',
           article: 476015,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_02' ]
         })
       );
@@ -226,7 +226,7 @@ function seed(dbURI) {
         createProduct({
           name: 'nonce',
           article: 476016,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_03' ]
         })
       );
@@ -235,7 +235,7 @@ function seed(dbURI) {
         createProduct({
           name: 'trance functions',
           article: 476017,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_04' ]
         })
       );
@@ -244,7 +244,7 @@ function seed(dbURI) {
         createProduct({
           name: 'finitude',
           article: 476018,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_05' ]
         })
       );
@@ -253,7 +253,7 @@ function seed(dbURI) {
         createProduct({
           name: 'primality',
           article: 476019,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_06' ]
         })
       );
@@ -262,7 +262,7 @@ function seed(dbURI) {
         createProduct({
           name: 'curves',
           article: 476020,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_07' ]
         })
       );
@@ -271,7 +271,7 @@ function seed(dbURI) {
         createProduct({
           name: 'anneal',
           article: 476021,
-          base_price: 500,
+          base_price: 750,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_08' ]
         })
       );
@@ -280,7 +280,7 @@ function seed(dbURI) {
         createProduct({
           name: 'visualizer',
           article: 476064,
-          base_price: 600,
+          base_price: 800,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_09' ]
         })
       );
@@ -291,7 +291,7 @@ function seed(dbURI) {
         createProduct({
           name: 'ulna',
           article: 166932,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2000' ]
         })
       );
@@ -300,7 +300,7 @@ function seed(dbURI) {
         createProduct({
           name: 'pollex',
           article: 166930,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_790' ]
         })
       );
@@ -309,7 +309,7 @@ function seed(dbURI) {
         createProduct({
           name: 'indica',
           article: 166931,
-          base_price: 300,
+          base_price: 400,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2025' ]
         })
       );
@@ -318,7 +318,7 @@ function seed(dbURI) {
         createProduct({
           name: 'annula',
           article: 166933,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2000' ]
         })
       );
@@ -327,7 +327,7 @@ function seed(dbURI) {
         createProduct({
           name: '3d4d',
           article: 166935,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_715' ]
         })
       );
@@ -336,7 +336,7 @@ function seed(dbURI) {
         createProduct({
           name: '2d3d',
           article: 166934,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2025' ]
         })
       );
@@ -347,7 +347,7 @@ function seed(dbURI) {
         createProduct({
           name: 'radix',
           article: 363703,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_1540' ]
         })
       );
@@ -356,7 +356,7 @@ function seed(dbURI) {
         createProduct({
           name: 'proxis',
           article: 363701,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_1400' ]
         })
       );
@@ -365,7 +365,7 @@ function seed(dbURI) {
         createProduct({
           name: 'helix',
           article: 363700,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_1515' ]
         })
       );
@@ -374,7 +374,7 @@ function seed(dbURI) {
         createProduct({
           name: 'arynx',
           article: 363702,
-          base_price: 400,
+          base_price: 500,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2430' ]
         })
       );

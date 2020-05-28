@@ -58,7 +58,7 @@ module.exports = (app) => {
           const sum = product.signals.reduce((acc, sig) => acc + sig.average, 0);
           const avg = sum / Math.max(1.0, product.signals.length);
 
-          product.price = product.base_price + avg * product.base_price;
+          product.price = product.base_price + 0.666 * avg * product.base_price;
           product.save();
         }
       });
