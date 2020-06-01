@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 
 const Signal = require('../models/signal.model');
@@ -54,7 +56,7 @@ module.exports = (app) => {
     return normalize01(rawAvg, min, max);
   }
 
-  router.post('/:signal_name/:signal_value', (req, res) => {
+  router.post(`${process.env.POST_TOKEN}/:signal_name/:signal_value`, (req, res) => {
     Signal.findOne({ name: req.params.signal_name }).then((signal) => {
       signal.values.set(currentDailyMinute(), clamp(req.params.signal_value, 0.0, 1.0));
       signal.average = average(signal.values, 60);
