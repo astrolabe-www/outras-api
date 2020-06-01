@@ -31,34 +31,40 @@ module.exports = (app) => {
   }
 
   function normalize01(val, min, max) {
-    return (val - min) / (max - min);
+    if (max === min) return min;
+    else return (val - min) / (max - min);
   }
 
-  function average(arr) {
+  function average(arr, avg_length = 60) {
+    const thisMinuteIndex = currentDailyMinute() + arr.length;
+    const hourAgoIndex = thisMinuteIndex - avg_length;
+
     let sum = 0.0;
     let min = 1.0;
     let max = 0.0;
 
-    for (const val of arr) {
+    for(let i = thisMinuteIndex; i > hourAgoIndex; i--) {
+      const val = arr[i % arr.length];
+
       sum += val;
       if(val < min) min = val;
       if(val > max) max = val;
     }
-    const rawAvg = sum / Math.max(1.0, arr.length);
+    const rawAvg = sum / Math.max(1.0, avg_length);
     return normalize01(rawAvg, min, max);
   }
 
   router.post('/:signal_name/:signal_value', (req, res) => {
     Signal.findOne({ name: req.params.signal_name }).then((signal) => {
       signal.values.set(currentDailyMinute(), clamp(req.params.signal_value, 0.0, 1.0));
-      signal.average = average(signal.values);
+      signal.average = average(signal.values, 60);
 
       Product.find({ _id: { $in: signal.product_ids } }).populate('signals').then((products) => {
         for (const product of products) {
           const sum = product.signals.reduce((acc, sig) => acc + sig.average, 0);
           const avg = sum / Math.max(1.0, product.signals.length);
 
-          product.price = product.base_price + 0.666 * avg * product.base_price;
+          product.price = product.base_price + avg * product.base_price;
           product.save();
         }
       });
