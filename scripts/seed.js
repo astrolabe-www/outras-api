@@ -34,7 +34,8 @@ function seed(dbURI) {
         const new_signal = new Signal({
           name: sig_name,
           values: fillArray(0, 24 * 60),
-          average: 0.0
+          average_total: 0.0,
+          average_last_hour: 0.0
         });
         SIGNALS[sig_name] = new_signal;
         new_signal.save();
@@ -83,7 +84,7 @@ function seed(dbURI) {
           name: 'splay',
           article: 476011,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_11' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_11' ]
         })
       );
 
@@ -92,7 +93,7 @@ function seed(dbURI) {
           name: 'noise',
           article: 476010,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_10' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_10' ]
         })
       );
 
@@ -101,7 +102,7 @@ function seed(dbURI) {
           name: 'sha3-512',
           article: 476009,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_09' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_09' ]
         })
       );
 
@@ -110,7 +111,7 @@ function seed(dbURI) {
           name: 'integrate',
           article: 476008,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_08' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_08' ]
         })
       );
 
@@ -119,7 +120,7 @@ function seed(dbURI) {
           name: 'breath/depth',
           article: 476007,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_07' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_07' ]
         })
       );
 
@@ -128,7 +129,7 @@ function seed(dbURI) {
           name: 'gcd',
           article: 476006,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_06' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_06' ]
         })
       );
 
@@ -137,7 +138,7 @@ function seed(dbURI) {
           name: 'convex hull',
           article: 476005,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_05' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_05' ]
         })
       );
 
@@ -146,7 +147,7 @@ function seed(dbURI) {
           name: 'quicksort',
           article: 476004,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_04' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_04' ]
         })
       );
 
@@ -155,7 +156,7 @@ function seed(dbURI) {
           name: 'reaction/diffusion',
           article: 476003,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_03' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_03' ]
         })
       );
 
@@ -164,7 +165,7 @@ function seed(dbURI) {
           name: 'eigenvalue',
           article: 476002,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_02' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_02' ]
         })
       );
 
@@ -173,7 +174,7 @@ function seed(dbURI) {
           name: 'fft',
           article: 476001,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_01' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_01' ]
         })
       );
 
@@ -182,7 +183,7 @@ function seed(dbURI) {
           name: 'prng',
           article: 476000,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_12' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_12' ]
         })
       );
 
@@ -191,7 +192,7 @@ function seed(dbURI) {
           name: 'inversion',
           article: 476012,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_12' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_12' ]
         })
       );
 
@@ -200,7 +201,7 @@ function seed(dbURI) {
           name: 'alpha/beta',
           article: 476013,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_01' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_01' ]
         })
       );
 
@@ -209,7 +210,7 @@ function seed(dbURI) {
           name: 'ellipsis',
           article: 476014,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_01' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_01' ]
         })
       );
 
@@ -218,7 +219,7 @@ function seed(dbURI) {
           name: 'quantization',
           article: 476015,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_02' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_02' ]
         })
       );
 
@@ -227,7 +228,7 @@ function seed(dbURI) {
           name: 'nonce',
           article: 476016,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_03' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_03' ]
         })
       );
 
@@ -236,7 +237,7 @@ function seed(dbURI) {
           name: 'trance functions',
           article: 476017,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_04' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_04' ]
         })
       );
 
@@ -245,7 +246,7 @@ function seed(dbURI) {
           name: 'finitude',
           article: 476018,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_05' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_05' ]
         })
       );
 
@@ -254,7 +255,7 @@ function seed(dbURI) {
           name: 'primality',
           article: 476019,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_06' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_06' ]
         })
       );
 
@@ -263,7 +264,7 @@ function seed(dbURI) {
           name: 'curves',
           article: 476020,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_07' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_07' ]
         })
       );
 
@@ -272,7 +273,7 @@ function seed(dbURI) {
           name: 'anneal',
           article: 476021,
           base_price: 750,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_08' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_08' ]
         })
       );
 
@@ -281,7 +282,7 @@ function seed(dbURI) {
           name: 'visualizer',
           article: 476064,
           base_price: 800,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'WIFI_09' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_09' ]
         })
       );
 
@@ -292,7 +293,7 @@ function seed(dbURI) {
           name: 'ulna',
           article: 166932,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2000' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_2000' ]
         })
       );
 
@@ -301,7 +302,7 @@ function seed(dbURI) {
           name: 'pollex',
           article: 166930,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_790' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_790' ]
         })
       );
 
@@ -310,7 +311,7 @@ function seed(dbURI) {
           name: 'indica',
           article: 166931,
           base_price: 400,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2025' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_2025' ]
         })
       );
 
@@ -319,7 +320,7 @@ function seed(dbURI) {
           name: 'annula',
           article: 166933,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2000' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_2000' ]
         })
       );
 
@@ -328,7 +329,7 @@ function seed(dbURI) {
           name: '3d4d',
           article: 166935,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_715' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_715' ]
         })
       );
 
@@ -337,7 +338,7 @@ function seed(dbURI) {
           name: '2d3d',
           article: 166934,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2025' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_2025' ]
         })
       );
 
@@ -348,7 +349,7 @@ function seed(dbURI) {
           name: 'radix',
           article: 363703,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_1540' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_1540' ]
         })
       );
 
@@ -357,7 +358,7 @@ function seed(dbURI) {
           name: 'proxis',
           article: 363701,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_1400' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_1400' ]
         })
       );
 
@@ -366,7 +367,7 @@ function seed(dbURI) {
           name: 'helix',
           article: 363700,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_1515' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_1515' ]
         })
       );
 
@@ -375,7 +376,7 @@ function seed(dbURI) {
           name: 'arynx',
           article: 363702,
           base_price: 500,
-          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_ANUSH', 'HEART_BEAT', 'HACKRF_2430' ]
+          signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'HACKRF_2430' ]
         })
       );
     })

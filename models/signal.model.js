@@ -9,7 +9,11 @@ const SignalSchema = new mongoose.Schema({
     type: [Number],
     required: true
   },
-  average: {
+  average_total: {
+    type: Number,
+    required: true
+  },
+  average_last_hour: {
     type: Number,
     required: true
   },

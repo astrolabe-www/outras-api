@@ -59,14 +59,21 @@ module.exports = (app) => {
   router.post(`${process.env.POST_TOKEN}/:signal_name/:signal_value`, (req, res) => {
     Signal.findOne({ name: req.params.signal_name }).then((signal) => {
       signal.values.set(currentDailyMinute(), clamp(req.params.signal_value, 0.0, 1.0));
-      signal.average = average(signal.values, 60);
+      signal.average_last_hour = average(signal.values, 60);
+      signal.average_total = average(signal.values, signal.values.length);
 
       Product.find({ _id: { $in: signal.product_ids } }).populate('signals').then((products) => {
         for (const product of products) {
-          const sum = product.signals.reduce((acc, sig) => acc + sig.average, 0);
-          const avg = sum / Math.max(1.0, product.signals.length);
+          const total_sum = product.signals.reduce((acc, sig) => acc + sig.average_total, 0);
+          const total_avg = sum / Math.max(1.0, product.signals.length);
 
-          product.price = product.base_price + avg * product.base_price;
+          const running_sum = product.signals.reduce((acc, sig) => {
+            const tAvg = (sig.average_total > 0.0) ? (sig.average_last_hour / sig.average_total) : 0.0;
+            return acc + tAvg;
+          }, 0);
+          const running_avg = sum / Math.max(1.0, product.signals.length);
+
+          product.price = product.base_price * (1.0 + total_avg + running_avg);
           product.save();
         }
       });
