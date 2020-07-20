@@ -55,7 +55,7 @@ function seed(dbURI) {
       SIGNAL2PRODUCT[sig_name][product._id] = true;
     }
 
-    return product.save();
+    return product.calculatePrice().save();
   }
 
   function populateSignalsWithProducts() {

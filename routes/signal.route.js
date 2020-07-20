@@ -64,17 +64,7 @@ module.exports = (app) => {
 
       Product.find({ _id: { $in: signal.product_ids } }).populate('signals').then((products) => {
         for (const product of products) {
-          const total_sum = product.signals.reduce((acc, sig) => acc + sig.average_total, 0);
-          const total_avg = total_sum / Math.max(1.0, product.signals.length);
-
-          const running_sum = product.signals.reduce((acc, sig) => {
-            const tAvg = (sig.average_total > 0.0) ? (sig.average_last_hour / sig.average_total) : 0.0;
-            return acc + Math.min(2.0, tAvg);
-          }, 0);
-          const running_avg = running_sum / Math.max(1.0, product.signals.length);
-
-          product.price = product.base_price * (1.0 + total_avg + running_avg);
-          product.save();
+          product.calculatePrice().save();
         }
       });
 
