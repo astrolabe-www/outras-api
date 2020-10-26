@@ -198,7 +198,7 @@ function seed(dbURI) {
 
       PRODUCTS.push(
         createProduct({
-          name: 'alpha/beta',
+          name: 'pruning',
           article: 476013,
           base_price: 450,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_01' ]
@@ -207,7 +207,7 @@ function seed(dbURI) {
 
       PRODUCTS.push(
         createProduct({
-          name: 'ellipsis',
+          name: 'exchange',
           article: 476014,
           base_price: 450,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_01' ]
@@ -216,36 +216,36 @@ function seed(dbURI) {
 
       PRODUCTS.push(
         createProduct({
-          name: 'quantization',
+          name: 'compression',
           article: 476015,
-          base_price: 450,
+          base_price: 550,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_02' ]
         })
       );
 
       PRODUCTS.push(
         createProduct({
-          name: 'nonce',
+          name: 'proof',
           article: 476016,
-          base_price: 450,
+          base_price: 650,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_03' ]
         })
       );
 
       PRODUCTS.push(
         createProduct({
-          name: 'trance functions',
+          name: 'cordic',
           article: 476017,
-          base_price: 450,
+          base_price: 650,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_04' ]
         })
       );
 
       PRODUCTS.push(
         createProduct({
-          name: 'finitude',
+          name: 'encoding',
           article: 476018,
-          base_price: 450,
+          base_price: 650,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_05' ]
         })
       );
@@ -254,7 +254,7 @@ function seed(dbURI) {
         createProduct({
           name: 'primality',
           article: 476019,
-          base_price: 450,
+          base_price: 550,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_06' ]
         })
       );
@@ -263,16 +263,16 @@ function seed(dbURI) {
         createProduct({
           name: 'curves',
           article: 476020,
-          base_price: 450,
+          base_price: 550,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_07' ]
         })
       );
 
       PRODUCTS.push(
         createProduct({
-          name: 'anneal',
+          name: 'annealing',
           article: 476021,
-          base_price: 450,
+          base_price: 650,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_08' ]
         })
       );
