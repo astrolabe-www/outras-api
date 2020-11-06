@@ -23,11 +23,11 @@ const ProductSchema = new mongoose.Schema({
 });
 
 ProductSchema.methods.calculatePrice = function() {
-  const total_sum = this.signals.reduce((acc, sig) => acc + sig.average_total, 0);
+  const total_sum = this.signals.reduce((acc, sig) => acc + sig.average, 0);
   const total_avg = total_sum / Math.max(1.0, this.signals.length);
 
   const running_sum = this.signals.reduce((acc, sig) => {
-    const tAvg = (sig.average_total > 0.0) ? (sig.average_last_hour / sig.average_total) : 0.0;
+    const tAvg = (sig.average > 0.0) ? (sig.last_hour.average / sig.average) : 0.0;
     return acc + Math.min(2.0, tAvg);
   }, 0);
   const running_avg = running_sum / Math.max(1.0, this.signals.length);

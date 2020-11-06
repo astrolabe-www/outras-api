@@ -58,9 +58,14 @@ module.exports = (app) => {
 
   router.post(`${process.env.POST_TOKEN}/:signal_name/:signal_value`, (req, res) => {
     Signal.findOne({ name: req.params.signal_name }).then((signal) => {
-      signal.values.set(currentDailyMinute(), clamp(req.params.signal_value, 0.0, 1.0));
-      signal.average_last_hour = average(signal.values, 60);
-      signal.average_total = average(signal.values, signal.values.length);
+      const cValue = clamp(req.params.signal_value, 0.0, 1.0);
+      signal.values.set(currentDailyMinute(), cValue);
+      signal.last_hour.average = average(signal.values, 60);
+      signal.last_hour.min = Math.min(signal.last_hour.min, cValue);
+      signal.last_hour.max = Math.max(signal.last_hour.min, cValue);
+      signal.average = average(signal.values, signal.values.length);
+      signal.min = Math.min(signal.min, cValue);
+      signal.max = Math.max(signal.min, cValue);
 
       Product.find({ _id: { $in: signal.product_ids } }).populate('signals').then((products) => {
         for (const product of products) {
