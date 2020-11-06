@@ -62,10 +62,10 @@ module.exports = (app) => {
       signal.values.set(currentDailyMinute(), cValue);
       signal.last_hour.average = average(signal.values, 60);
       signal.last_hour.min = Math.min(signal.last_hour.min, cValue);
-      signal.last_hour.max = Math.max(signal.last_hour.min, cValue);
+      signal.last_hour.max = Math.max(signal.last_hour.max, cValue);
       signal.average = average(signal.values, signal.values.length);
       signal.min = Math.min(signal.min, cValue);
-      signal.max = Math.max(signal.min, cValue);
+      signal.max = Math.max(signal.max, cValue);
 
       Product.find({ _id: { $in: signal.product_ids } }).populate('signals').then((products) => {
         for (const product of products) {
