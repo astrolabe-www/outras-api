@@ -18,8 +18,8 @@ const ProductSchema = new mongoose.Schema({
       type: Number,
       required: true
     },
-    current: {
-      type: Number,
+    history: {
+      type: [Number],
       required: true
     }
   },
@@ -28,23 +28,31 @@ const ProductSchema = new mongoose.Schema({
   }
 });
 
-ProductSchema.methods.calculatePrice = function() {
-  const norms = [];
-  this.signals.forEach((sig) => {
-    const sMin = Math.min(...sig.values);
-    const sMax = Math.max(...sig.values);
-    const nowIndex = (60 * (new Date()).getHours()) + (new Date()).getMinutes();
-    const nowValue = sig.values[nowIndex];
+function getNormalizedSignalsAtIndex(signals, i) {
+  return norms = signals.map((sig) => {
+    return (sig.max === 0 && sig.min === 1) ?
+      null : ((sig.max === sig.min) ?
+              sig.min : (sig.values[i] - sig.min) / (sig.max - sig.min));
+  }).filter(v => v !== null);
+}
 
-    if((sMax - sMin) > 0) {
-      norms.push((nowValue - sMin) / (sMax - sMin));
-    }
-  });
-
+function calculatePriceAtIndex(prod, i) {
+  const norms = getNormalizedSignalsAtIndex(prod.signals, i);
   const avg_sum = norms.reduce((acc, n) => acc + n, 0);
   const avg_avg = avg_sum / Math.max(1.0, norms.length);
+  const price = avg_avg * (prod.price.high - prod.price.low) + prod.price.low;
 
-  this.price.current = avg_avg * (this.price.high - this.price.low) + this.price.low;
+  prod.price.history.set(i, price);
+  return prod;
+}
+
+ProductSchema.methods.calculatePrice = function() {
+  if (this.price.history[0] === 0) {
+    this.price.history.forEach((_, i) => calculatePriceAtIndex(this, i));
+  } else {
+    const nowIndex = (60 * (new Date()).getHours()) + (new Date()).getMinutes();
+    calculatePriceAtIndex(this, nowIndex);
+  }
   return this;
 };
 

@@ -57,7 +57,7 @@ function seed(dbURI) {
     mProduct.price = {
       low: mProduct.base_price,
       high: 2.333 * mProduct.base_price,
-      current: mProduct.base_price
+      history: fillArray(0, 24 * 60)
     };
     const product = new Product(mProduct);
 

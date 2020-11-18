@@ -20,11 +20,16 @@ module.exports = (app) => {
     });
   });
 
+  function currentDailyMinute() {
+    const mDate = new Date();
+    return Math.floor((60 * mDate.getHours()) + mDate.getMinutes());
+  }
+
   router.get('/:article/price', (req, res) => {
     Product.findOne({ article: req.params.article }).select('-_id -__v').lean().then((result) => {
       res.status(200).send({
         success: true,
-        data: { price: result.price.current }
+        data: { price: result.price.history[currentDailyMinute()] }
       });
     }).catch((err) => {
       res.status(500).send({
@@ -38,7 +43,7 @@ module.exports = (app) => {
     Product.find().select('-_id -__v').lean().then((result) => {
       const prices = {};
       for (const product of result) {
-        prices[product.article] = product.price.current;
+        prices[product.article] = product.price.history[currentDailyMinute()];
       }
 
       res.status(200).send({
