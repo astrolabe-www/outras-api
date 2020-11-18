@@ -54,7 +54,11 @@ function seed(dbURI) {
     }
 
     mProduct.signals = sig_refs;
-    mProduct.price = mProduct.base_price;
+    mProduct.price = {
+      low: mProduct.base_price,
+      high: 2.333 * mProduct.base_price,
+      current: mProduct.base_price
+    };
     const product = new Product(mProduct);
 
     for (const sig_name of mProduct.signal_names) {

@@ -9,13 +9,19 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  base_price: {
-    type: Number,
-    required: true
-  },
   price: {
-    type: Number,
-    required: true
+    low: {
+      type: Number,
+      required: true
+    },
+    high: {
+      type: Number,
+      required: true
+    },
+    current: {
+      type: Number,
+      required: true
+    }
   },
   signals: {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Signal' }]
@@ -23,16 +29,22 @@ const ProductSchema = new mongoose.Schema({
 });
 
 ProductSchema.methods.calculatePrice = function() {
-  const total_sum = this.signals.reduce((acc, sig) => acc + sig.average, 0);
-  const total_avg = total_sum / Math.max(1.0, this.signals.length);
+  const norms = [];
+  this.signals.forEach((sig) => {
+    const sMin = Math.min(...sig.values);
+    const sMax = Math.max(...sig.values);
+    const nowIndex = (60 * (new Date()).getHours()) + (new Date()).getMinutes();
+    const nowValue = sig.values[nowIndex];
 
-  const running_sum = this.signals.reduce((acc, sig) => {
-    const tAvg = (sig.average > 0.0) ? (sig.last_hour.average / sig.average) : 0.0;
-    return acc + Math.min(2.0, tAvg);
-  }, 0);
-  const running_avg = running_sum / Math.max(1.0, this.signals.length);
+    if((sMax - sMin) > 0) {
+      norms.push((nowValue - sMin) / (sMax - sMin));
+    }
+  });
 
-  this.price = this.base_price * (1.0 + total_avg + running_avg);
+  const avg_sum = norms.reduce((acc, n) => acc + n, 0);
+  const avg_avg = avg_sum / Math.max(1.0, norms.length);
+
+  this.price.current = avg_avg * (this.price.high - this.price.low) + this.price.low;
   return this;
 };
 
