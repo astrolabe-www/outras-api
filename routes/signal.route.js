@@ -69,11 +69,6 @@ module.exports = (app) => {
       signal.min = allAverage.min;
       signal.max = allAverage.max;
 
-      const hourAverage = average(signal.values, 60);
-      signal.last_hour.average = hourAverage.average;
-      signal.last_hour.min = hourAverage.min;
-      signal.last_hour.max = hourAverage.max;
-
       Product.find({ _id: { $in: signal.product_ids } }).populate('signals').then((products) => {
         for (const product of products) {
           product.calculatePrice().save();

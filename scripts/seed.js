@@ -36,12 +36,7 @@ function seed(dbURI) {
           values: fillArray(0, 24 * 60),
           average: 0.0,
           max: 0.0,
-          min: 1.0,
-          last_hour: {
-            average: 0.0,
-            max: 0.0,
-            min: 1.0
-          }
+          min: 1.0
         });
         SIGNALS[sig_name] = new_signal;
         new_signal.save();

@@ -21,20 +21,6 @@ const SignalSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  last_hour: {
-    average: {
-      type: Number,
-      required: true
-    },
-    min: {
-      type: Number,
-      required: true
-    },
-    max: {
-      type: Number,
-      required: true
-    }
-  },
   product_ids: {
     type: [mongoose.Schema.Types.ObjectId]
   }
