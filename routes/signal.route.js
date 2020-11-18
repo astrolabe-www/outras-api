@@ -32,12 +32,9 @@ module.exports = (app) => {
     return Math.max(min, Math.min(max, parseFloat(val)));
   }
 
-  function normalize01(val, min, max) {
-    if (max === min) return min;
-    else return (val - min) / (max - min);
-  }
+  function average(arr, avg_length) {
+    avg_length = avg_length || arr.length;
 
-  function average(arr, avg_length = 60) {
     const thisMinuteIndex = currentDailyMinute() + arr.length;
     const hourAgoIndex = thisMinuteIndex - avg_length;
 
@@ -52,20 +49,30 @@ module.exports = (app) => {
       if(val < min) min = val;
       if(val > max) max = val;
     }
-    const rawAvg = sum / Math.max(1.0, avg_length);
-    return normalize01(rawAvg, min, max);
+
+    const average = sum / avg_length;
+
+    return {
+      average,
+      min,
+      max
+    };
   }
 
   router.post(`${process.env.POST_TOKEN}/:signal_name/:signal_value`, (req, res) => {
     Signal.findOne({ name: req.params.signal_name }).then((signal) => {
       const cValue = clamp(req.params.signal_value, 0.0, 1.0);
       signal.values.set(currentDailyMinute(), cValue);
-      signal.last_hour.average = average(signal.values, 60);
-      signal.last_hour.min = Math.min(signal.last_hour.min, cValue);
-      signal.last_hour.max = Math.max(signal.last_hour.max, cValue);
-      signal.average = average(signal.values, signal.values.length);
-      signal.min = Math.min(signal.min, cValue);
-      signal.max = Math.max(signal.max, cValue);
+
+      const allAverage = average(signal.values);
+      signal.average = allAverage.average;
+      signal.min = allAverage.min;
+      signal.max = allAverage.max;
+
+      const hourAverage = average(signal.values, 60);
+      signal.last_hour.average = hourAverage.average;
+      signal.last_hour.min = hourAverage.min;
+      signal.last_hour.max = hourAverage.max;
 
       Product.find({ _id: { $in: signal.product_ids } }).populate('signals').then((products) => {
         for (const product of products) {
