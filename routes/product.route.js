@@ -39,6 +39,20 @@ module.exports = (app) => {
     });
   });
 
+  router.get('/:article', (req, res) => {
+    Product.findOne({ article: req.params.article }).select('-_id -__v -signals').lean().then((result) => {
+      res.status(200).send({
+        success: true,
+        data: { product: result }
+      });
+    }).catch((err) => {
+      res.status(500).send({
+        success: false,
+        data: `${err}`
+      });
+    });
+  });
+
   router.get('/prices', (req, res) => {
     Product.find().select('-_id -__v').lean().then((result) => {
       const prices = {};
