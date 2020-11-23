@@ -52,23 +52,4 @@ module.exports = (app) => {
       });
     });
   });
-
-  router.get('/prices', (req, res) => {
-    Product.find().select('-_id -__v').lean().then((result) => {
-      const prices = {};
-      for (const product of result) {
-        prices[product.article] = product.price.history[currentDailyMinute()];
-      }
-
-      res.status(200).send({
-        success: true,
-        data: { prices }
-      });
-    }).catch((err) => {
-      res.status(500).send({
-        success: false,
-        data: `${err}`
-      });
-    });
-  });
 };
