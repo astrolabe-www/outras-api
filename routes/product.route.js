@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Product = require('../models/product.model');
+const { currentDailyMinute } = require('../utils/utils');
 
 module.exports = (app) => {
   const router = express.Router();
@@ -19,11 +20,6 @@ module.exports = (app) => {
       });
     });
   });
-
-  function currentDailyMinute() {
-    const mDate = new Date();
-    return Math.floor((60 * mDate.getHours()) + mDate.getMinutes());
-  }
 
   router.get('/prices', (req, res) => {
     Product.find().select('-_id -__v').lean().then((result) => {

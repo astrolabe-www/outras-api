@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 
-const logger = require('../utils/logger');
+const { logger } = require('../utils/utils');
 
 const Product = require('../models/product.model');
 const Signal = require('../models/signal.model');

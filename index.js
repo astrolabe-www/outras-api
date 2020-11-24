@@ -6,7 +6,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 
-const logger = require('./utils/logger');
+const { logger } = require('./utils/utils');
 
 const product = require('./routes/product.route');
 const signal = require('./routes/signal.route');

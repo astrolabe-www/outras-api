@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const { currentDailyMinute } = require('../utils/utils');
+
 const ProductSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -50,8 +52,7 @@ ProductSchema.methods.calculatePrice = function() {
   if (this.price.history[0] === 0) {
     this.price.history.forEach((_, i) => calculatePriceAtIndex(this, i));
   } else {
-    const nowIndex = (60 * (new Date()).getHours()) + (new Date()).getMinutes();
-    calculatePriceAtIndex(this, nowIndex);
+    calculatePriceAtIndex(this, currentDailyMinute());
   }
   return this;
 };

@@ -4,6 +4,7 @@ const express = require('express');
 
 const Signal = require('../models/signal.model');
 const Product = require('../models/product.model');
+const { currentDailyMinute } = require('../utils/utils');
 
 module.exports = (app) => {
   const router = express.Router();
@@ -23,11 +24,6 @@ module.exports = (app) => {
     });
   });
 
-  function currentDailyMinute() {
-    const mDate = new Date();
-    return Math.floor((60 * mDate.getHours()) + mDate.getMinutes());
-  }
-
   function clamp(val, min, max) {
     return Math.max(min, Math.min(max, parseFloat(val)));
   }
@@ -35,19 +31,19 @@ module.exports = (app) => {
   function average(arr, avg_length) {
     avg_length = avg_length || arr.length;
 
-    const thisMinuteIndex = currentDailyMinute() + arr.length;
-    const hourAgoIndex = thisMinuteIndex - avg_length;
+    const lastIndex = currentDailyMinute() + arr.length;
+    const firstIndex = lastIndex - avg_length;
 
     let sum = 0.0;
     let min = 1.0;
     let max = 0.0;
 
-    for(let i = thisMinuteIndex; i > hourAgoIndex; i--) {
+    for(let i = lastIndex; i > firstIndex; i--) {
       const val = arr[i % arr.length];
 
       sum += val;
-      if(val < min) min = val;
-      if(val > max) max = val;
+      min = Math.min(min, val);
+      max = Math.max(max, val);
     }
 
     const average = sum / avg_length;
