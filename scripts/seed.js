@@ -51,7 +51,7 @@ function seed(dbURI) {
     mProduct.signals = sig_refs;
     mProduct.price = {
       low: mProduct.base_price,
-      high: 3.0 * mProduct.base_price,
+      high: 2.333 * mProduct.base_price,
       raw: fillArray(0, 24 * 60),
       history: fillArray(0, 24 * 60)
     };
