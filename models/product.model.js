@@ -35,7 +35,7 @@ const ProductSchema = new mongoose.Schema({
 });
 
 function getNormalizedSignalsAtIndex(signals, i) {
-  return norms = signals.map((sig) => {
+  return signals.map((sig) => {
     return (sig.max === 0 && sig.min === 1) ?
       null : ((sig.max === sig.min) ?
               sig.min : (sig.values[i] - sig.min) / (sig.max - sig.min));
