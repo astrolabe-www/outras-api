@@ -67,4 +67,9 @@ module.exports = (app) => {
       });
     });
   });
+
+  router.post('/:token', (req, res) => {
+    // TODO: send email
+    res.status(200).send({ success: true });
+  });
 };
