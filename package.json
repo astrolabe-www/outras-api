@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "helmet": "^3.22.0",
     "mongoose": "^5.9",
+    "nodemailer": "^6.5.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {

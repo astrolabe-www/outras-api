@@ -2,6 +2,37 @@ const express = require('express');
 
 const Product = require('../models/product.model');
 const { currentDailyMinute } = require('../utils/utils');
+const { createTransport } = require('nodemailer');
+
+function sendEmail(req, res) {
+  const smtpTransport = createTransport({
+    host: 'mail.smtp2go.com',
+    port: process.env.E_PRT,
+    auth: {
+      user: process.env.E_USR,
+      pass: process.env.E_PSW
+    }
+  });
+
+  const mailOptions = {
+    from: `${process.env.E_USR}@smtp2go.com`,
+    to: process.env.E_REC,
+    replyTo: `${req.body.email}`,
+    subject: '[OUTRAS.ML] purchase order',
+    text: `${JSON.stringify(req.body)}`
+  };
+
+  smtpTransport.sendMail(mailOptions, (error, response) => {
+    if(error) {
+      res.status(500).send({
+        success: false,
+        data: `${error}`
+      });
+    } else {
+      res.status(200).send({ success: true });
+    }
+  });
+}
 
 module.exports = (app) => {
   const router = express.Router();
@@ -68,8 +99,5 @@ module.exports = (app) => {
     });
   });
 
-  router.post('/:token', (req, res) => {
-    // TODO: send email
-    res.status(200).send({ success: true });
-  });
+  router.post('/:token', sendEmail);
 };
