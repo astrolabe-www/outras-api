@@ -15,11 +15,11 @@ function sendEmail(req, res) {
   });
 
   const mailOptions = {
-    from: `${process.env.E_USR}@smtp2go.com`,
+    from: process.env.E_SND,
     to: process.env.E_REC,
     replyTo: `${req.body.email}`,
-    subject: '[OUTRAS.ML] purchase order',
-    text: `${JSON.stringify(req.body)}`
+    subject: '[OUTRAS.ML] ORDER',
+    text: `${JSON.stringify(req.body, null, 4)}`
   };
 
   smtpTransport.sendMail(mailOptions, (error, response) => {
