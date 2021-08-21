@@ -195,7 +195,7 @@ function seed(dbURI) {
 
       PRODUCTS.push(
         createProduct({
-          name: 'inversion',
+          name: 'sweep',
           article: 476012,
           base_price: 450,
           signal_names: [ 'TEMPERATURE_ARMPIT', 'TEMPERATURE_MOUTH', 'HEART_BEAT', 'WIFI_12' ]
