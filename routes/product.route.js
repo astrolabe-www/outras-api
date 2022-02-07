@@ -99,5 +99,5 @@ module.exports = (app) => {
     });
   });
 
-  router.post('/:token', sendEmail);
+  router.post('/order', sendEmail);
 };
